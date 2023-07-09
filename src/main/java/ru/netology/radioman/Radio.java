@@ -1,5 +1,12 @@
 package ru.netology.radioman;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentStation;
     static int minStation = 0;
@@ -9,17 +16,16 @@ public class Radio {
 
     private int countStation = 10;
 
-    public Radio() {
-    }
+  /*  public Radio() {
+    } */
 
     public Radio(int countStation) {
         this.countStation = countStation;
     }
 
-
-    public int getCurrentStation() {
+ /*   public int getCurrentStation() {
         return currentStation;
-    }
+    } */
 
     public void setCurrentStation(int currentStation) {
         if (currentStation < minStation || currentStation > countStation - 1) {
@@ -44,9 +50,9 @@ public class Radio {
         }
     }
 
-    public int getCurrentVolume() {
+ /*   public int getCurrentVolume() {
         return currentVolume;
-    }
+    } */
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume < minVolume || currentVolume > maxVolume) {
@@ -57,13 +63,13 @@ public class Radio {
 
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
-            currentVolume++; //Инкремент, увеличивает значение целочисленной переменной на единицу.
+            currentVolume++;
         }
     }
 
     public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume--; //Декремент, увеличивает значение целочисленной переменной на единицу.
+            currentVolume--;
         }
     }
 
