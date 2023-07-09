@@ -1,27 +1,41 @@
 package ru.netology.radioman;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Radio {
     private int currentStation;
-    static final int minStation = 0;
-    static final int maxStation = 9;
+    static int minStation = 0;
     private int currentVolume;
     static int minVolume = 0;
-    static int maxVolume = 10;
+    static int maxVolume = 100;
 
+    private int countStation = 10;
 
-    public int getCurrentStation() {
-        return currentStation;
+  /*  public Radio() {
+    } */
+
+    public Radio(int countStation) {
+        this.countStation = countStation;
     }
 
+ /*   public int getCurrentStation() {
+        return currentStation;
+    } */
+
     public void setCurrentStation(int currentStation) {
-        if (currentStation < minStation || currentStation > maxStation) {
+        if (currentStation < minStation || currentStation > countStation - 1) {
             return;
         }
         this.currentStation = currentStation;
     }
 
     public void nextStation() {
-        if (maxStation <= currentStation) {
+        if (countStation - 1 <= currentStation) {
             setCurrentStation(minStation);
         } else {
             setCurrentStation(currentStation + 1);
@@ -30,15 +44,15 @@ public class Radio {
 
     public void previousStation() {
         if (currentStation <= minStation) {
-            setCurrentStation(maxStation);
+            setCurrentStation(countStation - 1);
         } else {
             setCurrentStation(currentStation - 1);
         }
     }
 
-    public int getCurrentVolume() {
+ /*   public int getCurrentVolume() {
         return currentVolume;
-    }
+    } */
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume < minVolume || currentVolume > maxVolume) {
@@ -49,13 +63,13 @@ public class Radio {
 
     public void increaseVolume() {
         if (currentVolume < maxVolume) {
-            currentVolume++; //Инкремент, увеличивает значение целочисленной переменной на единицу.
+            currentVolume++;
         }
     }
 
     public void decreaseVolume() {
         if (currentVolume > 0) {
-            currentVolume--; //Декремент, увеличивает значение целочисленной переменной на единицу.
+            currentVolume--;
         }
     }
 
